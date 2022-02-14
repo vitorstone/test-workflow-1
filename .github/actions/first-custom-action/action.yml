@@ -1,0 +1,25 @@
+name: 'Hello World'
+description: 'Cool action'
+inputs:
+  level:
+    description: 'execution level'
+    required: true
+    default: 'dev'
+  name:
+    description: 'name'
+    required: true
+    default: 'paulo'
+
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-id }}
+runs:
+  using: "composite"
+  steps:
+    - name: Greeting
+      run: echo Hello ${{ inputs.name }}.
+      shell: bash
+    - name: Echoing level
+      run: echo 'this is the level ${{ inputs.level }}'.
+      shell: bash

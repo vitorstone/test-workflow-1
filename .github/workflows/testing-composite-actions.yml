@@ -1,0 +1,23 @@
+name: test custom action
+
+on: [push]
+
+jobs:
+  
+  testing-composite-actions-with-inputs:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+      - name: test action
+        uses: ./.github/actions/first-custom-action
+        with:
+          level: 'dev'
+          name: 'Vitor'
+      
+      - name: echoing succcess
+        run: |-
+          echo "hey it worked! let's go!"
+
